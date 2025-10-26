@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+// Define project categories with their projects
+const projectCategories = [
+  {
+    name: 'Web Development',
+    id: 'web',
+    projects: [
+      { 
+        name: 'Project 1', 
+        slug: 'project-1',
+        description: 'Description coming soon', 
+        status: 'In Progress' 
+      },
+      { 
+        name: 'Project 2', 
+        slug: 'project-2',
+        description: 'Description coming soon', 
+        status: 'Planned' 
+      },
+    ]
+  },
+  {
+    name: 'Data Science',
+    id: 'data',
+    projects: [
+      { 
+        name: 'Project 3', 
+        slug: 'project-3',
+        description: 'Description coming soon', 
+        status: 'Planned' 
+      },
+    ]
+  },
+  {
+    name: 'Research Tools',
+    id: 'research',
+    projects: [
+      { 
+        name: 'Project 4', 
+        slug: 'project-4',
+        description: 'Description coming soon', 
+        status: 'Planned' 
+      },
+    ]
+  },
+];
+---
+
+<BaseLayout title="Personal Projects">
+  <div class="page">
+    <h1>Personal Projects</h1>
+    
+    <div class="under-construction">
+      <h2>🚧 Under Construction</h2>
+      <p>
+        This page is currently being built. In the meantime, you can check out my projects on 
+        <a href="https://github.com/ItsWinsten" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      </p>
+    </div>
+
+    <div class="project-navigation">
+      <h2>Project Categories</h2>
+      <nav class="category-menu">
+        <ul class="category-list">
+          {projectCategories.map((category) => (
+            <li class="category-item">
+              <div class="category-header">
+                <a href={`#${category.id}`} class="category-link">
+                  {category.name} <span class="arrow">▾</span>
+                </a>
+              </div>
+              <ul class="project-list">
+                {category.projects.map((project) => (
+                  <li class="project-item">
+                    <a href={`${base}projects/${project.slug}/`} class="project-link">
+                      <span class="tree-icon">├─</span> {project.name}
+                      <span class="project-status">[{project.status}]</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="project-details">
+      {projectCategories.map((category) => (
+        <section id={category.id} class="category-section">
+          <h2>{category.name}</h2>
+          {category.projects.map((project) => (
+            <div class="project-card">
+              <h3><a href={`${base}projects/${project.slug}/`}>{project.name}</a></h3>
+              <p class="project-description">{project.description}</p>
+              <div class="project-meta">
+                <span class="status-badge status-{project.status.toLowerCase().replace(' ', '-')}">{project.status}</span>
+                <a href={`${base}projects/${project.slug}/`}>
+                  View Details →
+                </a>
+              </div>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  
+  .under-construction {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
+    max-width: 760px;
+    border: 2px dashed var(--accent);
+    border-radius: 0px;
+    background: rgba(var(--accent-rgb, 255, 215, 0), 0.05);
+  }
+  
+  .under-construction h2 {
+    margin: 0.5rem 0 1rem 0;
+    color: var(--accent);
+  }
+  
+  .under-construction p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .under-construction a {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Project Navigation - Tree Menu */
+  .project-navigation {
+    margin: 3rem 0;
+  }
+
+  .category-menu {
+    border: 2px solid var(--accent);
+    padding: 1.5rem;
+    background: var(--background);
+  }
+
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .category-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .category-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .category-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .category-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+    transform: translateX(5px);
+  }
+
+  .arrow {
+    font-size: 0.8em;
+    margin-left: 0.25rem;
+  }
+
+  .project-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .project-item {
+    margin: 0.5rem 0;
+  }
+
+  .project-link {
+    color: var(--color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--accent);
+  }
+
+  .tree-icon {
+    color: var(--accent);
+    font-family: monospace;
+  }
+
+  .project-status {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+
+  /* Project Details */
+  .project-details {
+    margin-top: 3rem;
+  }
+
+  .category-section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .category-section h2 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--accent);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--background);
+  }
+
+  .project-card h3 {
+    margin: 0 0 0.75rem 0;
+  }
+
+  .project-card h3 a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .project-card h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .project-description {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .status-in-progress {
+    background: rgba(255, 165, 0, 0.1);
+  }
+
+  .status-planned {
+    background: rgba(128, 128, 128, 0.1);
+  }
+
+  .status-completed {
+    background: rgba(0, 255, 0, 0.1);
+  }
+
+  .project-meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .project-meta a:hover {
+    text-decoration: underline;
+  }
+</style>
