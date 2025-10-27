@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getOrcidPublications } from '../lib/orcid-static-cache';
+
+const ORCID_ID = '0009-0009-4644-0072';
+
+const { publications, fetchError, lastUpdated } = await getOrcidPublications(ORCID_ID);
+---
+
+<BaseLayout title="Research">
+  <div class="page">
+    <h1>Research</h1>
+    
+    <h2>Research Interests</h2>
+    <p>
+      Ensuring safety in cyber-physical systems (CPS), such as autonomous vehicles, require rigorous validation against complex 
+      temporal requirements. My PhD research develops automated testing techniques for validating black-box cyber-physical systems
+      against multiple Signal Temporal Logic (STL) requirements using search-based software engineering, machine learning, and formal methods.
+    </p>
+
+    <p>
+      Key contributions include:
+    </p>
+    <ul>
+      <li><strong>Explicit output coverage:</strong> Identifying inputs that produce safety-critical or boundary-case behaviors through 
+        predetermined output analysis.</li>
+      <li><strong>Multi-requirement falsification:</strong> Simultaneously validating systems against interacting STL formulae to 
+        comprehensively test requirement dependencies.</li>
+      <li><strong>Continuous falsification:</strong> Extending validation efficacy across evolving system revisions while maintaining 
+        testing efficiency.</li>
+    </ul>
+
+    <p>
+      These techniques address critical gaps in black-box CPS testing, where search-based methods like generative adversarial networks (GANs) 
+      efficiently discover requirement violations without system internal knowledge. Consequently, this research advances scalable CPS validation 
+      frameworks directly supporting safety certification in automotive and aerospace industries, where requirement interactions pose significant 
+      risks.
+    </p>
+
+    <p>
+      <strong>PhD Thesis:</strong> Scalable Falsification of Multi-Formula STL Requirements for Cyber-Physical System Validation (title subject 
+      to change).
+    </p>
+
+    <h2>Current Work</h2>
+    <p>
+      I am a PhD Researcher at <a href="https://www.abo.fi/en/" target="_blank" rel="noopener noreferrer">Åbo Akademi University</a>, 
+      soon finishing my degree in Computer Science. I am a maintainer of <a href="https://gitlab.abo.fi/stc/stgem2" target="_blank" rel="noopener noreferrer">stgem (system testing using generative models)</a>, 
+      an open-source Python framework for automated test generation for CPS. STGEM leverages machine learning techniques, 
+      such as GANs and search-based algorithms to efficiently discover requirement violations and corner cases in 
+      safety-critical systems. The framework supports various testing approaches such as falsification, corner case generation, and requirement-driven testing, making it 
+      particularly well-suited for safety-critical systems in domains like automotive, robotics, and industrial automation.
+    </p>
+    
+    <h2>Publications</h2>
+    {fetchError && (
+      <div class="notice">
+        <p><strong>Note:</strong> {fetchError}</p>
+        <p>Please update your ORCID ID.</p>
+      </div>
+    )}
+    
+    {publications.length > 0 ? (
+      <div class="publications">
+        {publications.map((pub) => (
+          <div class="publication">
+            <h3 class="pub-title">{pub.title}</h3>
+            <div class="pub-meta">
+              <span class="pub-year">{pub.year}</span>
+              {pub.journal && <span class="pub-journal"> · {pub.journal}</span>}
+              {pub.type && <span class="pub-type"> · {pub.type.replace(/-/g, ' ')}</span>}
+            </div>
+            {pub.url && (
+              <div class="pub-links">
+                <a href={pub.url} target="_blank" rel="noopener noreferrer">
+                  View Publication →
+                </a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    ) : !fetchError && (
+      <p><em>Loading publications from ORCID...</em></p>
+    )}
+    
+    
+    <h2>Research Links</h2>
+    <div class="research-links">
+      <a class="button" href="https://research.abo.fi/en/persons/jesper-winsten/" target="_blank" rel="noopener noreferrer">Research Profile (ÅAU)</a>
+      <a class="button" href={`https://orcid.org/${ORCID_ID}`} target="_blank" rel="noopener noreferrer">ORCID Profile</a>
+      <a class="button" href="https://scholar.google.com/citations?user=KbH2RR0AAAAJ&hl=fi&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Page-specific styles for research publications */
+  .publications {
+    margin-top: 1.5rem;
+  }
+
+  .publication {
+    margin-bottom: 2rem;
+  }
+
+  .pub-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .pub-meta {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-year {
+    font-weight: bold;
+  }
+
+  .pub-type {
+    text-transform: capitalize;
+  }
+
+  .pub-links {
+    margin-top: 0.5rem;
+  }
+
+  .pub-links a {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .pub-links a:hover {
+    text-decoration: underline;
+  }
+</style>
