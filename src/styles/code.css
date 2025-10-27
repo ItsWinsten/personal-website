@@ -58,7 +58,7 @@
 }
 
 .collapsible-title::after {
-  content: '▶';
+  content: '>';
   position: absolute;
   right: 10px;
   transition: transform .2s;
