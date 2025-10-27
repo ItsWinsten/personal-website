@@ -1,50 +1,165 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title="winsten.dev">
+  <div class="page">
+    <div class="index-content">
+      <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
+        <img src="/profile.jpg" alt="Jesper Winsten" class="profile-image" style="margin-top: 0;"/>
+        <div style="flex: 1; min-width: 300px;">
+          <h1 id="hello-there" style="margin-top: 0;">Jesper Winsten</h1>
+          <p style="font-size: 1.1rem; color: var(--accent); margin-bottom: 1rem;">
+            PhD Researcher in Computer Science at <br/><a href="https://research.abo.fi/en/persons/jesper-winsten/">Åbo Akademi University</a>
+          </p>
+          <p>
+            Welcome to my personal website! Among many things I am interested in programming, machine learning, research and powerlifting.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section class="index-section">
+    <h2>About Me</h2>
+      <p>
+        My research focuses on advancing software engineering through intelligent automation, specifically in the domain of cyber-physical system testing. I work on developing novel GAN-based methodologies to automatically generate test cases for complex systems, aiming to improve both efficiency and coverage in the testing process.
+      </p>
+      <p>
+        With a strong foundation in search-based software engineering and test automation, I'm driven by the challenge of solving complex problems at the cutting edge of software engineering research. My work combines theoretical research with practical applications, contributing to more robust and reliable cyber-physical systems.
+      </p>
+    </section>
+
+    <section class="index-section">
+      <h2>Current Work</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>PhD Researcher</span>
+          <span class="timeline-date">2022 - Present</span>
+        </div>
+        <p>Developing novel GAN-based methodologies for automated test case generation in cyber-physical systems. Conducting research in search-based software engineering and test automation to improve efficiency and coverage in complex system testing.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Machine Learning Engineer</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Everon Oy Ab</span>
+          <span class="timeline-date">2022 - 2022</span>
+        </div>
+        <p>
+          Developed machine learning solutions for welfare technologies, including an in‑house client welfare monitoring system based on pose detection. The system performs on‑device / edge inference and only transmits 
+          anonymized pose vectors and events (falls, unusual inactivity, posture changes), ensuring full privacy so no human can access raw camera feeds; providing real‑time alerts and aggregated, privacy‑preserving analytics 
+          for caregivers.
+        </p>
+      </div>
+    </section>
+
+    <section class="index-section">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Doctor of Philosophy - PhD, Computer Science</span>
+          <span class="timeline-date">2022 - Present</span>
+        </div>
+        <p>Research focus on advancing software engineering through intelligent automation with GAN-based methodologies for cyber-physical system testing.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University & Reykjavik University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Master of Science - MS</span>
+          <span class="timeline-date">2020 - 2022</span>
+        </div>
+        <p>Double Degree in Intelligent Software Systems (CS), Nordic Master Programme in Intelligent Software Systems (NISS). The Nordic Master (NM) is the Nordic Council of Ministers’ funding programme, 
+          which offers financing for joint Nordic Master’s programmes based on research, excellence and high quality. Master’s Programmes are executed by universities from at least two different Nordic countries 
+          or their autonomous regions. <br/><br/> <strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Bachelor of Science - BS</span>
+          <span class="timeline-date">2017 - 2020</span>
+        </div>
+        <p><strong>Thesis: Utilization of connection sequences for connecting devices to fake Wi-Fi networks.</strong></p>
+      </div>
+    </section>
+
+
+
+  </div>
+</BaseLayout>
+
+<style>
+  .index-section h2 {
+    color: var(--accent);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-top: 2px solid var(--accent);
+    font-size: 1.5rem;
+  }
+
+  .index-section + .index-section h2 {
+    border-top: 2px solid var(--accent);
+  }
+
+  .timeline-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--accent) 80%, transparent);
+  }
+
+  .timeline-date {
+    color: var(--accent);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .timeline-subtitle {
+    font-size: 1rem;
+    color: var(--foreground);
+    margin: 0.25rem 0 0.75rem 0;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-item p:last-child {
+    margin-bottom: 0;
+  }
+</style>

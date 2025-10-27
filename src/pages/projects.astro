@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const projectCategories = [
+  {
+    name: 'Web Development',
+    id: 'web',
+    projects: [
+      { 
+        name: 'Personal Website', 
+        slug: 'personal-website',
+        description: 'My personal website built with Astro and deployed on Cloudflare Pages. A portfolio showcasing my research work and personal projects with a terminal-inspired design.', 
+        status: 'Completed' 
+      },
+    ]
+  },
+  {
+    name: 'Mobile Development',
+    id: 'mobile',
+    projects: [
+      { 
+        name: 'Mobile App', 
+        slug: 'mobile-app',
+        description: 'A community-focused mobile application built with Flutter. Open-source project currently under development.', 
+        status: 'In Progress' 
+      },
+    ]
+  },
+];
+---
+
+<BaseLayout title="Personal Projects">
+  <div class="page">
+    <h1>Personal Projects</h1>
+    <div class="project-list-section">
+      {projectCategories.map((category) => (
+        <section id={category.id} class="category-section">
+          <h2>{category.name}</h2>
+          {category.projects.map((project) => (
+            <div class="project-card">
+              <h3><a href={`${base}projects/${project.slug}/`}>{project.name}</a></h3>
+              <p class="project-description">{project.description}</p>
+              <div class="project-meta">
+                <span class="status-badge status-{project.status.toLowerCase().replace(' ', '-')}">{project.status}</span>
+                <a href={`${base}projects/${project.slug}/`}>
+                  View Details →
+                </a>
+              </div>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .under-construction {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
+    max-width: 760px;
+    border: 2px dashed var(--accent);
+    border-radius: 0px;
+    background: rgba(var(--accent-rgb, 255, 215, 0), 0.05);
+  }
+  
+  .under-construction h2 {
+    margin: 0.5rem 0 1rem 0;
+    color: var(--accent);
+  }
+  
+  .under-construction p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .under-construction a {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Project List */
+  .project-list-section {
+    margin-top: 3rem;
+  }
+
+  .category-section {
+    margin-bottom: 3rem;
+  }
+
+  .category-section h2 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--accent);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--background);
+  }
+
+  .project-card h3 {
+    margin: 0 0 0.75rem 0;
+  }
+
+  .project-card h3 a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .project-card h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .project-description {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  /* .project-meta and .status-badge styles are defined in page.css */
+
+  .project-meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .project-meta a:hover {
+    text-decoration: underline;
+  }
+</style>

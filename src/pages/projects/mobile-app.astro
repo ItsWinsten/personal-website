@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const breadcrumbs = [
+  { name: 'home', url: base, clickable: false },
+  { name: 'projects', url: `${base}projects/` },
+  { name: 'mobile_app', url: `${base}projects/mobile-app/` }
+];
+---
+
+<BaseLayout title="Mobile App" breadcrumbs={breadcrumbs}>
+  <div class="page">
+    <article class="project-detail">
+      <header class="project-header">
+        <h1>Mobile App</h1>
+        <div class="project-meta">
+          <span class="status-badge status-in-progress">In Progress</span>
+          <span class="project-category">Mobile Development</span>
+        </div>
+      </header>
+
+      <section class="project-section">
+        <h2>Overview</h2>
+        <p>
+          A community-focused mobile application currently under development. This project is being kept 
+          intentionally vague for now as the concept is still a bit vague to me as well.
+        </p>
+        <p>
+          The primary goal of this project is to learn mobile app development while building something 
+          open-source. The app will be developed with modern mobile development practices, 
+          prioritizing user experience, accessibility, and cross-platform compatibility. More details will be 
+          shared as the project takes shape.
+        </p>
+      </section>
+
+      <section class="project-section">
+        <h2>Technologies</h2>
+        <ul>
+          <li><strong><a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a></strong> - Cross-platform mobile framework for building native applications for iOS and Android from a single codebase.</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>Project Status</h2>
+        <p>
+          This project is currently in active development. Check back later for updates, or follow the development 
+          on GitHub once the repository is made public.
+        </p>
+      </section>
+
+      <div class="back-link">
+        <a href={`${base}projects/`}>← Back to Projects</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

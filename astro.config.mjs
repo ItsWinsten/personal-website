@@ -5,13 +5,16 @@ import sitemap from "@astrojs/sitemap";
 
 import cloudflare from "@astrojs/cloudflare";
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://winsten.dev",
+  base: "/",
+  adapter: cloudflare(),
   integrations: [mdx(), sitemap()],
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
+  markdown: {
+    shikiConfig: {
+      theme: "css-variables",
+      langs: [],
+      wrap: true,
     },
-  }),
+  },
 });
