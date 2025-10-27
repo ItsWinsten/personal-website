@@ -4,39 +4,162 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="winsten.dev">
   <div class="page">
-    <div class="index-content framed">
-    <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
-      <img src="/profile.jpg" alt="Jesper Winsten" style="width: 200px; height: 200px; object-fit: fit; object-position: center; border: 6px solid var(--accent); display: block;" />
-      <div style="flex: 1; min-width: 300px;">
-        <h1 id="hello-there">Hello there!</h1>
-        <p>Welcome to my personal website! [Add your introduction here - who you are, what you do, your research interests, etc.]</p>
+    <div class="index-content">
+      <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
+        <img src="/profile.jpg" alt="Jesper Winsten" class="profile-image" style="margin-top: 0;"/>
+        <div style="flex: 1; min-width: 300px;">
+          <h1 id="hello-there" style="margin-top: 0;">Jesper Winsten</h1>
+          <p style="font-size: 1.1rem; color: var(--accent); margin-bottom: 1rem;">
+            PhD Researcher in Computer Science at <br/><a href="https://research.abo.fi/en/persons/jesper-winsten/">Åbo Akademi University</a>
+          </p>
+          <p>
+            Welcome to my personal website! Among many things I am interested in programming, machine learning, research and powerlifting.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="important-links" style="margin-top: 2rem;">
-    <h2>Research Links</h2>
-    <p>My research profiles and academic publications:</p>
-    <ul style="list-style: none; padding: 0;">
-      <li style="margin: 0.5rem 0;"><a href="https://research.abo.fi/en/persons/jesper-winsten/" target="_blank" rel="noopener noreferrer">Research Profile (Åbo Akademi)</a></li>
-      <li style="margin: 0.5rem 0;"><a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" rel="noopener noreferrer">ORCID Profile</a></li>
-      <li style="margin: 0.5rem 0;"><a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-      <li style="margin: 0.5rem 0;"><a href="https://gitlab.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">Work GitLab</a></li>
-    </ul>
-    
-    <h2 style="margin-top: 2rem;">Personal Links</h2>
-    <p>Connect with me on social and professional platforms:</p>
-    <ul style="list-style: none; padding: 0;">
-      <li style="margin: 0.5rem 0;"><a href="https://github.com/ItsWinsten" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      <li style="margin: 0.5rem 0;"><a href="https://fi.linkedin.com/in/jesper-winsten" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-    </ul>
-  </div>
+
+    <section class="index-section">
+    <h2>About Me</h2>
+      <p>
+        My research focuses on advancing software engineering through intelligent automation, specifically in the domain of cyber-physical system testing. I work on developing novel GAN-based methodologies to automatically generate test cases for complex systems, aiming to improve both efficiency and coverage in the testing process.
+      </p>
+      <p>
+        With a strong foundation in search-based software engineering and test automation, I'm driven by the challenge of solving complex problems at the cutting edge of software engineering research. My work combines theoretical research with practical applications, contributing to more robust and reliable cyber-physical systems.
+      </p>
+    </section>
+
+    <section class="index-section">
+      <h2>Current Work</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>PhD Researcher</span>
+          <span class="timeline-date">2022 - Present</span>
+        </div>
+        <p>Developing novel GAN-based methodologies for automated test case generation in cyber-physical systems. Conducting research in search-based software engineering and test automation to improve efficiency and coverage in complex system testing.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Machine Learning Engineer</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Everon Oy Ab</span>
+          <span class="timeline-date">2022 - 2022</span>
+        </div>
+        <p>
+          Developed machine learning solutions for welfare technologies, including an in‑house client welfare monitoring system based on pose detection. The system performs on‑device / edge inference and only transmits 
+          anonymized pose vectors and events (falls, unusual inactivity, posture changes), ensuring full privacy so no human can access raw camera feeds; providing real‑time alerts and aggregated, privacy‑preserving analytics 
+          for caregivers.
+        </p>
+      </div>
+    </section>
+
+    <section class="index-section">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Doctor of Philosophy - PhD, Computer Science</span>
+          <span class="timeline-date">2022 - Present</span>
+        </div>
+        <p>Research focus on advancing software engineering through intelligent automation with GAN-based methodologies for cyber-physical system testing.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University & Reykjavik University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Master of Science - MS</span>
+          <span class="timeline-date">2020 - 2022</span>
+        </div>
+        <p>Double Degree in Intelligent Software Systems (CS), Nordic Master Programme in Intelligent Software Systems (NISS). The Nordic Master (NM) is the Nordic Council of Ministers’ funding programme, 
+          which offers financing for joint Nordic Master’s programmes based on research, excellence and high quality. Master’s Programmes are executed by universities from at least two different Nordic countries 
+          or their autonomous regions. <br/><br/> <strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3>Åbo Akademi University</h3>
+        </div>
+        <div class="timeline-subtitle">
+          <span>Bachelor of Science - BS</span>
+          <span class="timeline-date">2017 - 2020</span>
+        </div>
+        <p><strong>Thesis: Utilization of connection sequences for connecting devices to fake Wi-Fi networks.</strong></p>
+      </div>
+    </section>
+
+
+
   </div>
 </BaseLayout>
 
 <style>
-  .page {
-    max-width: 760px;
-    margin: 0 auto;
+  .index-section h2 {
+    color: var(--accent);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-top: 2px solid var(--accent);
+    font-size: 1.5rem;
+  }
+
+  .index-section + .index-section h2 {
+    border-top: 2px solid var(--accent);
+  }
+
+  .timeline-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--accent) 80%, transparent);
+  }
+
+  .timeline-date {
+    color: var(--accent);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .timeline-subtitle {
+    font-size: 1rem;
+    color: var(--foreground);
+    margin: 0.25rem 0 0.75rem 0;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-item p:last-child {
+    margin-bottom: 0;
   }
 </style>

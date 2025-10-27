@@ -90,3 +90,32 @@
   color: var(--accent);
   margin-top: 10px;
 }
+/* Project and research link containers */
+.project-links,
+.research-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.research-links {
+  margin-top: 1rem;
+}
+
+/* Project/research link buttons (simpler style) */
+.project-links .button,
+.research-links .button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.project-links .button:hover,
+.research-links .button:hover {
+  background: var(--accent);
+  color: var(--background);
+}

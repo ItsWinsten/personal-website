@@ -1,82 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getOrcidPublications } from '../lib/orcid-static-cache';
 
-// Replace with your actual ORCID ID
-const ORCID_ID = '0009-0009-4644-0072'; // e.g., '0000-0002-1234-5678'
+const ORCID_ID = '0009-0009-4644-0072';
 
-interface OrcidWork {
-  title: string;
-  year: number;
-  type: string;
-  doi?: string;
-  url?: string;
-  journal?: string;
-}
-
-let publications: OrcidWork[] = [];
-let fetchError: string | null = null;
-
-// Fetch publications from ORCID
-try {
-  // First, get the works summary
-  const response = await fetch(
-    `https://pub.orcid.org/v3.0/${ORCID_ID}/works`,
-    {
-      headers: {
-        'Accept': 'application/json',
-      },
-    }
-  );
-
-  if (response.ok) {
-    const data = await response.json() as any;
-    
-    // Parse the ORCID response
-    if (data.group) {
-      publications = data.group.map((group: any) => {
-        const workSummary = group['work-summary']?.[0];
-        if (!workSummary) return null;
-
-        const title = workSummary.title?.title?.value || 'Untitled';
-        const year = workSummary['publication-date']?.year?.value || 'N/A';
-        const type = workSummary.type || 'publication';
-        
-        // Get DOI or URL
-        let doi = null;
-        let url = null;
-        
-        if (workSummary['external-ids']?.['external-id']) {
-          const externalIds = workSummary['external-ids']['external-id'];
-          const doiEntry = externalIds.find((id: any) => id['external-id-type'] === 'doi');
-          if (doiEntry) {
-            doi = doiEntry['external-id-value'];
-            url = `https://doi.org/${doi}`;
-          }
-        }
-        
-        // Get journal name if available
-        const journal = workSummary['journal-title']?.value;
-
-        return {
-          title,
-          year: parseInt(year) || 0,
-          type,
-          doi,
-          url,
-          journal,
-        };
-      }).filter(Boolean);
-
-      // Sort by year (most recent first)
-      publications.sort((a, b) => b.year - a.year);
-    }
-  } else {
-    fetchError = `Failed to fetch from ORCID (Status: ${response.status})`;
-  }
-} catch (error) {
-  fetchError = `Error fetching publications: ${error instanceof Error ? error.message : 'Unknown error'}`;
-  console.error('ORCID fetch error:', error);
-}
+const { publications, fetchError, lastUpdated } = await getOrcidPublications(ORCID_ID);
 ---
 
 <BaseLayout title="Research">
@@ -85,19 +13,50 @@ try {
     
     <h2>Research Interests</h2>
     <p>
-      My research interests lie at the intersection of search-based software engineering, cyber-physical system testing, generative adversarial networks (GANs), and test automation.
+      Ensuring safety in cyber-physical systems (CPS), such as autonomous vehicles, require rigorous validation against complex 
+      temporal requirements. My PhD research develops automated testing techniques for validating black-box cyber-physical systems
+      against multiple Signal Temporal Logic (STL) requirements using search-based software engineering, machine learning, and formal methods.
     </p>
 
-    <h2>Current Projects</h2>
     <p>
-      [Describe your ongoing research projects]
+      Key contributions include:
+    </p>
+    <ul>
+      <li><strong>Explicit output coverage:</strong> Identifying inputs that produce safety-critical or boundary-case behaviors through 
+        predetermined output analysis.</li>
+      <li><strong>Multi-requirement falsification:</strong> Simultaneously validating systems against interacting STL formulae to 
+        comprehensively test requirement dependencies.</li>
+      <li><strong>Continuous falsification:</strong> Extending validation efficacy across evolving system revisions while maintaining 
+        testing efficiency.</li>
+    </ul>
+
+    <p>
+      These techniques address critical gaps in black-box CPS testing, where search-based methods like generative adversarial networks (GANs) 
+      efficiently discover requirement violations without system internal knowledge. Consequently, this research advances scalable CPS validation 
+      frameworks directly supporting safety certification in automotive and aerospace industries, where requirement interactions pose significant 
+      risks.
+    </p>
+
+    <p>
+      <strong>PhD Thesis:</strong> Scalable Falsification of Multi-Formula STL Requirements for Cyber-Physical System Validation (title subject 
+      to change).
+    </p>
+
+    <h2>Current Work</h2>
+    <p>
+      I am a PhD Researcher at <a href="https://www.abo.fi/en/" target="_blank" rel="noopener noreferrer">Åbo Akademi University</a>, 
+      soon finishing my degree in Computer Science. I am a maintainer of <a href="https://gitlab.abo.fi/stc/stgem2" target="_blank" rel="noopener noreferrer">stgem (system testing using generative models)</a>, 
+      an open-source Python framework for automated test generation for CPS. STGEM leverages machine learning techniques, 
+      such as GANs and search-based algorithms to efficiently discover requirement violations and corner cases in 
+      safety-critical systems. The framework supports various testing approaches such as falsification, corner case generation, and requirement-driven testing, making it 
+      particularly well-suited for safety-critical systems in domains like automotive, robotics, and industrial automation.
     </p>
     
     <h2>Publications</h2>
     {fetchError && (
       <div class="notice">
         <p><strong>Note:</strong> {fetchError}</p>
-        <p>Please update your ORCID ID in <code>src/pages/research.astro</code></p>
+        <p>Please update your ORCID ID.</p>
       </div>
     )}
     
@@ -127,51 +86,22 @@ try {
     
     
     <h2>Research Links</h2>
-    <p>
-      Find my research profiles and publications on the following platforms:
-    </p>
-    <ul>
-      <li><a href="https://research.abo.fi/en/persons/jesper-winsten/" target="_blank" rel="noopener noreferrer">Research Profile (Åbo Akademi)</a></li>
-      <li><a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" rel="noopener noreferrer">ORCID Profile</a></li>
-      <li><a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-      <li><a href="https://gitlab.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">Work GitLab</a></li>
-    </ul>
+    <div class="research-links">
+      <a class="button" href="https://research.abo.fi/en/persons/jesper-winsten/" target="_blank" rel="noopener noreferrer">Research Profile (ÅAU)</a>
+      <a class="button" href={`https://orcid.org/${ORCID_ID}`} target="_blank" rel="noopener noreferrer">ORCID Profile</a>
+      <a class="button" href="https://scholar.google.com/citations?user=KbH2RR0AAAAJ&hl=fi&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    </div>
   </div>
 </BaseLayout>
 
 <style>
-  .page {
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  
-  .page h2 {
-    margin-top: 2rem;
-  }
-  
-  .page ul {
-    margin-left: 1.5rem;
-  }
-
-  .notice {
-    background: var(--accent);
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1rem 0;
-  }
-
+  /* Page-specific styles for research publications */
   .publications {
     margin-top: 1.5rem;
   }
 
   .publication {
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--accent);
-  }
-
-  .publication:last-child {
-    border-bottom: none;
   }
 
   .pub-title {

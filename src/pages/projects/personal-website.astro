@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const breadcrumbs = [
+  { name: 'home', url: base, clickable: true },
+  { name: 'projects', url: `${base}projects/` },
+  { name: 'personal_website', url: `${base}projects/personal-website/` }
+];
+---
+
+<BaseLayout title="Personal Website" breadcrumbs={breadcrumbs}>
+  <div class="page">
+    <article class="project-detail">
+      <header class="project-header">
+        <h1>Personal Website</h1>
+        <div class="project-meta">
+          <span class="status-badge status-completed">Completed</span>
+          <span class="project-category">Web Development</span>
+        </div>
+      </header>
+
+      <section class="project-section">
+        <h2>Overview</h2>
+        <p>
+          My personal website built with Astro and deployed on Cloudflare Pages. This site serves as a portfolio 
+          where I showcase my research work and personal projects. The design is based on the 
+          <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a> 
+          theme by Dennis Klappe, which provides a clean, terminal-inspired aesthetic.
+        </p>
+        <p>
+          The website focuses on performance, accessibility, and simplicity with responsive layouts 
+          optimized for fast loading times through Astro's static-first architecture.
+        </p>
+      </section>
+
+      <section class="project-section">
+        <h2>Technologies & Features</h2>
+        <ul>
+          <li><strong><a href="https://astro.build/">Astro</a></strong> - Static site generator providing a fast, static-first architecture with minimal JavaScript. Pages are pre-rendered at build time for optimal performance and SEO.</li>
+          <li><strong><a href="https://www.typescriptlang.org/">TypeScript</a></strong> - Type-safe development ensuring code reliability and better developer experience with compile-time error checking.</li>
+          <li><strong><a href="https://pages.cloudflare.com/">Cloudflare Pages</a></strong> - Hosting platform providing fast worldwide access through edge deployment.</li>
+          <li><strong>Terminal Theme</strong> - Based on <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a>, featuring a clean, terminal-inspired aesthetic with <a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener noreferrer">Fira Code</a> typography and responsive design that works seamlessly across all devices.</li>
+          <li><strong>Custom Syntax Highlighting</strong> - Code blocks are styled with syntax highlighting using <a href="https://shiki.style/">Shiki</a>, matching the terminal aesthetic.</li>
+          <li><strong><a href="https://postman.orcid.org/" target="_blank" rel="noopener noreferrer">ORCID API Integration</a></strong> - Automatically fetches and displays research publications from ORCID. Publications are cached during a scheduled rebuild every month for optimal performance. This reduced page load time from 200ms to just 2-3ms.</li>
+          <li><strong>Privacy-Focused</strong> - No social media integrations (Twitter/X embeds, Open Graph meta tags, Facebook sharing features, and external tracking scripts) to maintain visitor privacy and reduce unnecessary third-party bloat.</li>
+          <li><strong>SEO Optimization</strong> - Automatic sitemap generation, semantic HTML, and proper meta tags for search engine visibility.</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>Links</h2>
+        <div class="project-links">
+          <a href="https://github.com/ItsWinsten/personal-website" target="_blank" rel="noopener noreferrer" class="button">
+            View on GitHub
+          </a>
+          <a href="https://winsten.dev" target="_blank" rel="noopener noreferrer" class="button">
+            Live Site
+          </a>
+        </div>
+      </section>
+
+      <div class="back-link">
+        <a href={`${base}projects/`}>← Back to Projects</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
