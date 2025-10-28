@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-My personal website built with [Astro](https://astro.build/) and deployed on Cloudflare Workers. The design is based on the [astro-theme-terminal](https://github.com/dennisklappe/astro-theme-terminal) theme by Dennis Klappe, providing a clean, terminal-inspired aesthetic.
+My personal website built with [Astro](https://astro.build/) and deployed on Cloudflare Pages. The design is based on the [astro-theme-terminal](https://github.com/dennisklappe/astro-theme-terminal) theme by Dennis Klappe, providing a clean, terminal-inspired aesthetic.
 
 **Live Site:** [winsten.dev](https://winsten.dev)
 
