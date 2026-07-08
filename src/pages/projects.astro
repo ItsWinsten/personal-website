@@ -11,7 +11,7 @@ const projectCategories = [
       { 
         name: 'Personal Website', 
         slug: 'personal-website',
-        description: 'My personal website built with Astro and deployed on Cloudflare Pages. A portfolio showcasing my research work and personal projects with a terminal-inspired design.', 
+        description: 'My personal website built with Astro and deployed on Cloudflare Workers. A portfolio showcasing my research work and projects with a terminal-inspired design.', 
         status: 'Completed' 
       },
     ]
@@ -31,9 +31,9 @@ const projectCategories = [
 ];
 ---
 
-<BaseLayout title="Personal Projects">
+<BaseLayout title="Projects">
   <div class="page">
-    <h1>Personal Projects</h1>
+    <h1>Projects</h1>
     <div class="project-list-section">
       {projectCategories.map((category) => (
         <section id={category.id} class="category-section">
@@ -43,7 +43,7 @@ const projectCategories = [
               <h3><a href={`${base}projects/${project.slug}/`}>{project.name}</a></h3>
               <p class="project-description">{project.description}</p>
               <div class="project-meta">
-                <span class="status-badge status-{project.status.toLowerCase().replace(' ', '-')}">{project.status}</span>
+                <span class={`status-badge status-${project.status.toLowerCase().replace(' ', '-')}`}>{project.status}</span>
                 <a href={`${base}projects/${project.slug}/`}>
                   View Details →
                 </a>

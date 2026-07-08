@@ -1,9 +1,7 @@
-// Build-time only cache for ORCID publications
-// Data is fetched ONCE during build and embedded into the static site
-// To update: rebuild and redeploy
-
-import fs from 'node:fs';
-import path from 'node:path';
+// Build-time only cache for ORCID publications.
+// Astro prerenders the Research page, so this fetch runs during the Cloudflare
+// Workers build and the resulting links/data are embedded into static HTML.
+// The deployed Worker serves that HTML without calling ORCID at request time.
 
 interface OrcidWork {
   title: string;
@@ -20,10 +18,8 @@ interface CacheData {
   lastUpdated: string;
 }
 
-const CACHE_DIR = path.join(process.cwd(), '.astro', 'cache');
-const CACHE_FILE = path.join(CACHE_DIR, 'orcid-data.json');
-
-let buildTimeCache: CacheData | null = null;
+const buildTimeCache = new Map<string, CacheData>();
+const inFlightFetches = new Map<string, Promise<CacheData>>();
 
 async function fetchOrcidData(orcidId: string): Promise<{ publications: OrcidWork[]; fetchError: string | null }> {
   let publications: OrcidWork[] = [];
@@ -92,47 +88,39 @@ async function fetchOrcidData(orcidId: string): Promise<{ publications: OrcidWor
 }
 
 export async function getOrcidPublications(orcidId: string): Promise<CacheData> {
-  if (buildTimeCache !== null) {
-    console.log('Using build-time cached ORCID data');
-    return buildTimeCache;
+  const cached = buildTimeCache.get(orcidId);
+  if (cached) {
+    console.log(`Using build-time cached ORCID data for ${orcidId}`);
+    return cached;
   }
 
-  if (fs.existsSync(CACHE_FILE)) {
-    try {
-      const cacheContent = fs.readFileSync(CACHE_FILE, 'utf-8');
-      const cached: CacheData = JSON.parse(cacheContent);
-      console.log(`Using file cached ORCID data from ${cached.lastUpdated}`);
-      buildTimeCache = cached;
-      return cached;
-    } catch (error) {
-      console.warn('Failed to read cache, fetching fresh data:', error);
-    }
-  } else {
-    console.log('No cache found, fetching fresh data...');
+  const inFlightFetch = inFlightFetches.get(orcidId);
+  if (inFlightFetch) {
+    console.log(`Using in-flight ORCID build fetch for ${orcidId}`);
+    return inFlightFetch;
   }
 
   console.log('Fetching ORCID data for build...');
-  const { publications, fetchError } = await fetchOrcidData(orcidId);
-  
-  const cacheData: CacheData = {
-    publications,
-    fetchError,
-    lastUpdated: new Date().toISOString(),
-  };
+  const fetchPromise = (async () => {
+    const { publications, fetchError } = await fetchOrcidData(orcidId);
+
+    const cacheData: CacheData = {
+      publications,
+      fetchError,
+      lastUpdated: new Date().toISOString(),
+    };
+
+    buildTimeCache.set(orcidId, cacheData);
+    return cacheData;
+  })();
+
+  inFlightFetches.set(orcidId, fetchPromise);
 
   try {
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR, { recursive: true });
-    }
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(cacheData, null, 2));
-    console.log('Cache saved successfully');
-  } catch (error) {
-    console.warn('Failed to write cache:', error);
+    return await fetchPromise;
+  } finally {
+    inFlightFetches.delete(orcidId);
   }
-
-  buildTimeCache = cacheData;
-  
-  return cacheData;
 }
 
 export type { OrcidWork, CacheData };
