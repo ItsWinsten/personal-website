@@ -4,7 +4,7 @@ import { getOrcidPublications } from '../lib/orcid-static-cache';
 
 const ORCID_ID = '0009-0009-4644-0072';
 
-const { publications, fetchError, lastUpdated } = await getOrcidPublications(ORCID_ID);
+const { publications, fetchError } = await getOrcidPublications(ORCID_ID);
 ---
 
 <BaseLayout title="Research">
@@ -13,28 +13,24 @@ const { publications, fetchError, lastUpdated } = await getOrcidPublications(ORC
     
     <h2>Research Interests</h2>
     <p>
-      Ensuring safety in cyber-physical systems (CPS), such as autonomous vehicles, require rigorous validation against complex 
-      temporal requirements. My PhD research develops automated testing techniques for validating black-box cyber-physical systems
-      against multiple Signal Temporal Logic (STL) requirements using search-based software engineering, machine learning, and formal methods.
+      My research focuses on automated testing for cyber-physical systems (CPS), including systems such as autonomous vehicles, drones, and robotics. These systems combine software with physical behavior, so failures can depend on how inputs, timing, and the environment interact.
     </p>
 
     <p>
-      Key contributions include:
+      I develop methods for validating black-box CPS against formal requirements. In this setting, the tester can run the system and observe its inputs and outputs, but cannot inspect or modify the internal implementation. My work uses search-based software engineering, machine learning, and Signal Temporal Logic (STL) to generate test scenarios that expose requirement violations.
+    </p>
+
+    <p>
+      Current research themes include:
     </p>
     <ul>
-      <li><strong>Explicit output coverage:</strong> Identifying inputs that produce safety-critical or boundary-case behaviors through 
-        predetermined output analysis.</li>
-      <li><strong>Multi-requirement falsification:</strong> Simultaneously validating systems against interacting STL formulae to 
-        comprehensively test requirement dependencies.</li>
-      <li><strong>Continuous falsification:</strong> Extending validation efficacy across evolving system revisions while maintaining 
-        testing efficiency.</li>
+      <li><strong>Explicit output coverage:</strong> generating inputs that produce important output behaviors, including boundary cases and safety-critical responses.</li>
+      <li><strong>Multi-requirement falsification:</strong> testing several STL requirements together to find failures caused by requirement interactions.</li>
+      <li><strong>Continuous falsification:</strong> reusing testing knowledge across system versions so validation remains effective as the system evolves.</li>
     </ul>
 
     <p>
-      These techniques address critical gaps in black-box CPS testing, where search-based methods like generative adversarial networks (GANs) 
-      efficiently discover requirement violations without system internal knowledge. Consequently, this research advances scalable CPS validation 
-      frameworks directly supporting safety certification in automotive and aerospace industries, where requirement interactions pose significant 
-      risks.
+      The goal is to make CPS validation more scalable and systematic. This is especially important in safety-critical domains, where engineers need evidence that systems behave correctly across many operating conditions and requirement combinations.
     </p>
 
     <p>
@@ -42,14 +38,11 @@ const { publications, fetchError, lastUpdated } = await getOrcidPublications(ORC
       to change).
     </p>
 
-    <h2>Current Work</h2>
+    <h2>Current Research</h2>
     <p>
-      I am a PhD Researcher at <a href="https://www.abo.fi/en/" target="_blank" rel="noopener noreferrer">Åbo Akademi University</a>, 
-      soon finishing my degree in Computer Science. I am a maintainer of <a href="https://gitlab.abo.fi/stc/stgem2" target="_blank" rel="noopener noreferrer">stgem (system testing using generative models)</a>, 
-      an open-source Python framework for automated test generation for CPS. STGEM leverages machine learning techniques, 
-      such as GANs and search-based algorithms to efficiently discover requirement violations and corner cases in 
-      safety-critical systems. The framework supports various testing approaches such as falsification, corner case generation, and requirement-driven testing, making it 
-      particularly well-suited for safety-critical systems in domains like automotive, robotics, and industrial automation.
+      I am a PhD Researcher at <a href="https://www.abo.fi/en/" target="_blank" rel="noopener noreferrer">Åbo Akademi University</a>,{' '}
+      currently completing my degree in Computer Science. I am a maintainer of <a href="https://gitlab.abo.fi/stc/stgem2" target="_blank" rel="noopener noreferrer">stgem (system testing using generative models)</a>,{' '}
+      an open-source Python framework for automated CPS test generation. STGEM supports falsification, corner-case generation, and requirement-driven testing. It combines search algorithms and generative models, including GANs, to find test cases that are difficult to discover manually.
     </p>
     
     <h2>Publications</h2>

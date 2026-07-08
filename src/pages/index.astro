@@ -5,33 +5,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="winsten.dev">
   <div class="page">
     <div class="index-content">
-      <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
-        <img fetchpriority="high" src="/profile.webp" alt="Jesper Winsten" class="profile-image" style="margin-top: 0;"/>
-        <div style="flex: 1; min-width: 300px;">
-          <h1 id="hello-there" style="margin-top: 0;">Jesper Winsten</h1>
-          <p style="font-size: 1.1rem; color: var(--accent); margin-bottom: 1rem;">
+      <div class="profile-intro">
+        <img fetchpriority="high" src="/profile.webp" alt="Jesper Winsten" class="profile-image" />
+        <div class="profile-summary">
+          <h1 id="hello-there">Jesper Winsten</h1>
+          <p class="profile-tagline">
             PhD Researcher | AI & Software Testing<br/>
             <a href="https://research.abo.fi/en/persons/jesper-winsten/">Åbo Akademi University</a>
           </p>
           <p>
-            Researching intelligent test automation with GANs. Passionate about machine learning, search-based software engineering, and powerlifting.
+            I develop AI-assisted testing methods for cyber-physical systems, with a focus on generating test cases that reveal requirement violations and safety-critical behavior.
           </p>
         </div>
       </div>
     </div>
 
     <section class="index-section">
-    <h2>About Me</h2>
+      <h2>About Me</h2>
       <p>
-        My research focuses on advancing software engineering through intelligent automation, specifically in the domain of cyber-physical system testing. I work on developing novel GAN-based methodologies to automatically generate test cases for complex systems, aiming to improve both efficiency and coverage in the testing process.
+        I am a PhD researcher in Computer Science at Åbo Akademi University. My work sits at the intersection of software engineering, machine learning, and safety validation for cyber-physical systems such as autonomous vehicles and robotics.
       </p>
       <p>
-        With a strong foundation in search-based software engineering and test automation, I'm driven by the challenge of solving complex problems at the cutting edge of software engineering research. My work combines theoretical research with practical applications, contributing to more robust and reliable cyber-physical systems.
+        I study how automated test generation can help engineers find failures earlier. In particular, I use search-based software engineering and generative models to produce test scenarios for black-box systems, where testers can observe inputs and outputs but not the system's internal implementation.
       </p>
     </section>
 
     <section class="index-section">
-      <h2>Current Work</h2>
+      <h2>Experience</h2>
       <div class="timeline-item">
         <div class="timeline-header">
           <h3>Åbo Akademi University</h3>
@@ -40,7 +40,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span>PhD Researcher</span>
           <span class="timeline-date">2022 - Present</span>
         </div>
-        <p>Developing novel GAN-based methodologies for automated test case generation in cyber-physical systems. Conducting research in search-based software engineering and test automation to improve efficiency and coverage in complex system testing.</p>
+        <p>Researching automated test generation for cyber-physical systems. My current work uses search-based methods and generative adversarial networks (GANs) to create test cases that expose requirement violations, edge cases, and unsafe behavior.</p>
       </div>
       
       <div class="timeline-item">
@@ -49,12 +49,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="timeline-subtitle">
           <span>Everon Oy Ab</span>
-          <span class="timeline-date">2022 - 2022</span>
+          <span class="timeline-date">2022</span>
         </div>
         <p>
-          Developed machine learning solutions for welfare technologies, including an in‑house client welfare monitoring system based on pose detection. The system performs on‑device / edge inference and only transmits 
-          anonymized pose vectors and events (falls, unusual inactivity, posture changes), ensuring full privacy so no human can access raw camera feeds; providing real‑time alerts and aggregated, privacy‑preserving analytics 
-          for caregivers.
+          Developed machine learning solutions for welfare technology. One project used pose detection to monitor client well-being on edge devices. The system kept raw camera data local and transmitted only anonymized pose vectors and events, such as falls or unusual inactivity, so caregivers could receive alerts without access to video feeds.
         </p>
       </div>
     </section>
@@ -69,7 +67,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span>Doctor of Philosophy - PhD, Computer Science</span>
           <span class="timeline-date">2022 - Present</span>
         </div>
-        <p>Research focus on advancing software engineering through intelligent automation with GAN-based methodologies for cyber-physical system testing.</p>
+        <p>Research focus: automated testing and falsification of cyber-physical systems using search-based methods and generative models.</p>
       </div>
       
       <div class="timeline-item">
@@ -77,12 +75,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>Åbo Akademi University & Reykjavik University</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>Master of Science - MS</span>
+          <span>Master of Science - MS, Computer Science</span>
           <span class="timeline-date">2020 - 2022</span>
         </div>
-        <p>Double Degree in Intelligent Software Systems (CS), Nordic Master Programme in Intelligent Software Systems (NISS). The Nordic Master (NM) is the Nordic Council of Ministers’ funding programme, 
-          which offers financing for joint Nordic Master’s programmes based on research, excellence and high quality. Master’s Programmes are executed by universities from at least two different Nordic countries 
-          or their autonomous regions. <br/><br/> <strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
+        <p>Double degree in the Nordic Master Programme in Intelligent Software Systems (NISS), completed at Åbo Akademi University and Reykjavik University. <br/><br/> <strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
       </div>
       
       <div class="timeline-item">
@@ -90,9 +86,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>Åbo Akademi University</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>Bachelor of Science - BS</span>
+          <span>Bachelor of Science - BS, Computer Science</span>
           <span class="timeline-date">2017 - 2020</span>
         </div>
+        <p>Minor studies: Biochemistry.</p>
         <p><strong>Thesis: Utilization of connection sequences for connecting devices to fake Wi-Fi networks.</strong></p>
       </div>
     </section>
@@ -103,6 +100,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .profile-intro {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .profile-summary {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .profile-summary h1 {
+    margin-top: 0;
+  }
+
+  .profile-tagline {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .profile-image {
+    margin-top: 0;
+  }
+
   .index-section h2 {
     color: var(--accent);
     margin-top: 3rem;
