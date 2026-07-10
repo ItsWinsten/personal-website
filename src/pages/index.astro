@@ -52,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="timeline-date">2022</span>
         </div>
         <p>
-          Developed machine learning solutions for welfare technology. One project used pose detection to monitor client well-being on edge devices. The system kept raw camera data local and transmitted only anonymized pose vectors and events, such as falls or unusual inactivity, so caregivers could receive alerts without access to video feeds.
+          Developed machine learning solutions for welfare technology with a strong privacy, security, and GDPR focus. One project used pose detection to monitor client well-being on edge devices. The system kept raw camera data local, secured camera access, and transmitted only anonymized pose vectors and events, such as falls or unusual inactivity, so caregivers could receive alerts without access to video feeds.
         </p>
       </div>
     </section>
@@ -78,7 +78,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span>Master of Science - MS, Computer Science</span>
           <span class="timeline-date">2020 - 2022</span>
         </div>
-        <p>Double degree in the Nordic Master Programme in Intelligent Software Systems (NISS), completed at Åbo Akademi University and Reykjavik University. <br/><br/> <strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
+        <p>Double degree completed through the Nordic Master Programme in Intelligent Software Systems (NISS).</p>
+        <div class="degree-details" aria-label="Master's degree details by university">
+          <div class="degree-detail">
+            <h4>Åbo Akademi University</h4>
+            <p><strong>Degree:</strong> Computer Science</p>
+            <p><strong>Main module:</strong> Computational Data Analytics</p>
+          </div>
+          <div class="degree-detail">
+            <h4>Reykjavik University</h4>
+            <p><strong>Degree:</strong> Computer Science</p>
+            <p><strong>Main module:</strong> Intelligent Software Systems</p>
+          </div>
+        </div>
+        <p><strong>Thesis: Deep learning approaches for ship detection from inshore and offshore imagery.</strong></p>
       </div>
       
       <div class="timeline-item">
@@ -185,6 +198,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .timeline-item p:last-child {
+    margin-bottom: 0;
+  }
+
+  .degree-details {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0.9rem 0 1rem;
+  }
+
+  .degree-detail {
+    border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    padding: 0.55rem 0 0.55rem 0.85rem;
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+
+  .degree-detail h4 {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.92rem;
+    color: var(--accent);
+  }
+
+  .degree-detail p {
+    margin: 0.15rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--foreground) 82%, transparent);
+  }
+
+  .degree-detail p:last-child {
     margin-bottom: 0;
   }
 </style>
