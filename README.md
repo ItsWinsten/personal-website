@@ -48,7 +48,7 @@ npm run deploy
 
 ### Configuration
 
-- `wrangler.json` - Cloudflare Workers configuration
+- `wrangler.jsonc` - Cloudflare Workers configuration
 - `astro.config.mjs` - Astro build and integration settings
 
 ## License
