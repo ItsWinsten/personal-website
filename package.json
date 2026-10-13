@@ -8,21 +8,12 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "cloudflare": {
-    "label": "Personal Website",
-    "products": [
-      "Workers"
-    ],
-    "publish": false
-  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro build && wrangler dev",
+    "preview": "astro build && wrangler pages dev dist/client",
     "astro": "astro",
-    "cf-typegen": "wrangler types",
-    "check": "astro build && tsc && wrangler deploy --dry-run",
-    "deploy": "npm run build && wrangler deploy"
+    "check": "astro build && tsc"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.1",

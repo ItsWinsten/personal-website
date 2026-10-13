@@ -1,7 +1,7 @@
 // Build-time only cache for ORCID publications.
 // Astro prerenders the Research page, so this fetch runs during the Cloudflare
-// Workers build and the resulting links/data are embedded into static HTML.
-// The deployed Worker serves that HTML without calling ORCID at request time.
+// Pages build and the resulting links/data are embedded into static HTML.
+// The deployed site serves that HTML without calling ORCID at request time.
 
 interface OrcidWork {
   title: string;
