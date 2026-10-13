@@ -10,11 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="profile-summary">
           <h1 id="hello-there">Jesper Winsten</h1>
           <p class="profile-tagline">
-            PhD Researcher | AI & Software Testing<br/>
+            PhD Researcher | Search-Based Software Testing<br/>
             <a href="https://research.abo.fi/en/persons/jesper-winsten/">Åbo Akademi University</a>
           </p>
           <p>
-            I develop AI-assisted testing methods for cyber-physical systems, with a focus on generating test cases that reveal requirement violations and safety-critical behavior.
+            I develop search-based optimization methods for testing cyber-physical systems against formal requirements.
           </p>
         </div>
       </div>
@@ -23,10 +23,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="index-section">
       <h2>About Me</h2>
       <p>
-        I am a PhD researcher in Computer Science at Åbo Akademi University. My work sits at the intersection of software engineering, machine learning, and safety validation for cyber-physical systems such as autonomous vehicles and robotics.
+        I am a PhD researcher in Computer Science at Åbo Akademi University. I study search-based testing and falsification of cyber-physical systems.
       </p>
       <p>
-        I study how automated test generation can help engineers find failures earlier. In particular, I use search-based software engineering and generative models to produce test scenarios for black-box systems, where testers can observe inputs and outputs but not the system's internal implementation.
+        I treat test generation as an optimization problem: select inputs, run the system, evaluate its outputs against requirements, and use the result to guide the next search. My work focuses on black-box systems whose internal implementation is unavailable to the tester.
       </p>
     </section>
 
@@ -34,13 +34,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2>Experience</h2>
       <div class="timeline-item">
         <div class="timeline-header">
-          <h3>Åbo Akademi University</h3>
+          <h3>PhD Researcher</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>PhD Researcher</span>
+          <span>Åbo Akademi University</span>
           <span class="timeline-date">2022 - Present</span>
         </div>
-        <p>Researching automated test generation for cyber-physical systems. My current work uses search-based methods and generative adversarial networks (GANs) to create test cases that expose requirement violations, edge cases, and unsafe behavior.</p>
+        <p>Researching search-based optimization for testing cyber-physical systems. My work includes multi-requirement falsification, continuous requirement falsification, and explicit output coverage.</p>
       </div>
       
       <div class="timeline-item">
@@ -52,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="timeline-date">2022</span>
         </div>
         <p>
-          Developed machine learning solutions for welfare technology with a strong privacy, security, and GDPR focus. One project used pose detection to monitor client well-being on edge devices. The system kept raw camera data local, secured camera access, and transmitted only anonymized pose vectors and events, such as falls or unusual inactivity, so caregivers could receive alerts without access to video feeds.
+          Developed machine learning software for welfare technology under privacy, security, and GDPR constraints. One project used on-device pose detection to identify falls and unusual inactivity. Raw camera data remained on the device; it only sent alerts to caregivers.
         </p>
       </div>
     </section>
@@ -61,21 +61,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2>Education</h2>
       <div class="timeline-item">
         <div class="timeline-header">
-          <h3>Åbo Akademi University</h3>
+          <h3>Doctor of Philosophy in Computer Science</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>Doctor of Philosophy - PhD, Computer Science</span>
+          <span>Åbo Akademi University</span>
           <span class="timeline-date">2022 - Present</span>
         </div>
-        <p>Research focus: automated testing and falsification of cyber-physical systems using search-based methods and generative models.</p>
+        <p>Research focus: scalable, search-based falsification of multiple Signal Temporal Logic requirements for cyber-physical systems.</p>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-header">
-          <h3>Åbo Akademi University & Reykjavik University</h3>
+          <h3>Master of Science in Computer Science</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>Master of Science - MS, Computer Science</span>
+          <span>Åbo Akademi University and Reykjavik University</span>
           <span class="timeline-date">2020 - 2022</span>
         </div>
         <p>Double degree completed through the Nordic Master Programme in Intelligent Software Systems (NISS).</p>
@@ -96,10 +96,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       
       <div class="timeline-item">
         <div class="timeline-header">
-          <h3>Åbo Akademi University</h3>
+          <h3>Bachelor of Science in Computer Science</h3>
         </div>
         <div class="timeline-subtitle">
-          <span>Bachelor of Science - BS, Computer Science</span>
+          <span>Åbo Akademi University</span>
           <span class="timeline-date">2017 - 2020</span>
         </div>
         <p>Minor studies: Biochemistry.</p>

@@ -18,28 +18,27 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <section class="project-section">
         <h2>Overview</h2>
         <p>
-          My personal website built with Astro and deployed on Cloudflare Workers. This site serves as a portfolio 
-          where I showcase my research work and personal projects. The design is based on the{' '}
-          <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a>{' '}
-          theme by Dennis Klappe, which provides a clean, terminal-inspired aesthetic.
+          I built this site with Astro and host it on Cloudflare Workers. It contains my research, work history,
+          and software projects. The design is based on Dennis Klappe's{' '}
+          <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a>.
         </p>
         <p>
-          The website focuses on performance, accessibility, and simplicity with responsive layouts 
-          optimized for fast loading times through Astro's static-first architecture.
+          Astro pre-renders the pages, so the site sends little JavaScript to the browser. The layout also works
+          on narrow screens and with keyboard navigation.
         </p>
       </section>
 
       <section class="project-section">
         <h2>Technologies & Features</h2>
         <ul>
-          <li><strong><a href="https://astro.build/">Astro</a></strong> - Static site generator providing a fast, static-first architecture with minimal JavaScript. Pages are pre-rendered at build time for optimal performance and SEO.</li>
-          <li><strong><a href="https://www.typescriptlang.org/">TypeScript</a></strong> - Type-safe development ensuring code reliability and better developer experience with compile-time error checking.</li>
-          <li><strong><a href="https://workers.cloudflare.com/">Cloudflare Workers</a></strong> - Hosting platform providing fast worldwide access through edge deployment.</li>
-          <li><strong>Terminal Theme</strong> - Based on <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a>, featuring a clean, terminal-inspired aesthetic with <a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener noreferrer">Fira Code</a> typography and responsive design that works seamlessly across all devices.</li>
-          <li><strong>Custom Syntax Highlighting</strong> - Code blocks are styled with syntax highlighting using <a href="https://shiki.style/">Shiki</a>, matching the terminal aesthetic.</li>
-          <li><strong><a href="https://postman.orcid.org/" target="_blank" rel="noopener noreferrer">ORCID API Integration</a></strong> - Fetches research publications once during each Cloudflare Workers build and embeds the links into the static Research page. The deployed site serves the cached build output without calling ORCID at request time.</li>
-          <li><strong>Privacy-Focused</strong> - No social media integrations (Twitter/X embeds, Open Graph meta tags, Facebook sharing features, and external tracking scripts) to maintain visitor privacy and reduce unnecessary third-party bloat.</li>
-          <li><strong>SEO Optimization</strong> - Automatic sitemap generation, semantic HTML, and proper meta tags for search engine visibility.</li>
+          <li><strong><a href="https://astro.build/">Astro</a></strong> - Pre-renders the site's pages at build time.</li>
+          <li><strong><a href="https://www.typescriptlang.org/">TypeScript</a></strong> - Provides static type checking for the site's code.</li>
+          <li><strong><a href="https://workers.cloudflare.com/">Cloudflare Workers</a></strong> - Hosts the built site.</li>
+          <li><strong>Terminal theme</strong> - Adapts <a href="https://github.com/dennisklappe/astro-theme-terminal" target="_blank" rel="noopener noreferrer">astro-theme-terminal</a> with <a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener noreferrer">Fira Code</a> and a responsive layout.</li>
+          <li><strong>Syntax highlighting</strong> - Uses <a href="https://shiki.style/">Shiki</a> to highlight code blocks.</li>
+          <li><strong><a href="https://postman.orcid.org/" target="_blank" rel="noopener noreferrer">ORCID API</a></strong> - Fetches my publication list during each build and includes it in the generated Research page.</li>
+          <li><strong>Privacy</strong> - Uses no analytics, tracking scripts, social-media embeds, or third-party sharing widgets.</li>
+          <li><strong>Search indexing</strong> - Generates a sitemap and provides canonical URLs, page descriptions, and semantic HTML.</li>
         </ul>
       </section>
 

@@ -6,7 +6,7 @@ export interface Props {
   breadcrumbs?: { name: string; url: string; clickable?: boolean }[];
 }
 
-const { title, description = "PhD researcher developing AI-driven test automation for cyber-physical systems. Research, projects & insights on machine learning and software engineering.", image, breadcrumbs } = Astro.props;
+const { title, description = "PhD researcher working on search-based optimization for testing cyber-physical systems against formal requirements.", image, breadcrumbs } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
@@ -67,6 +67,7 @@ const generatedBreadcrumbs = breadcrumbs || (() => {
             <li>
               <ul class="menu__dropdown">
                 <li><a href={`${base}research/`}>Research</a></li>
+                <li><a href={`${base}teaching/`}>Teaching</a></li>
                 <li><a href={`${base}projects/`}>Projects</a></li>
               </ul>
             </li>
@@ -76,6 +77,7 @@ const generatedBreadcrumbs = breadcrumbs || (() => {
         <nav class="navigation-menu">
           <ul class="navigation-menu__inner menu--desktop">
             <li><a href={`${base}research/`}>Research</a></li>
+            <li><a href={`${base}teaching/`}>Teaching</a></li>
             <li><a href={`${base}projects/`}>Projects</a></li>
           </ul>
 

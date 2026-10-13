@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const courses = [
+  {
+    code: 'IT00CD76',
+    title: 'Databaser',
+    credits: '5 ECTS',
+    language: 'Swedish',
+    description: 'An introduction to designing, implementing, and using relational databases.',
+    topics: [
+      'Entity–relationship modelling and the relational model',
+      'SQL for defining, querying, and updating databases',
+      'Normalization, denormalization, and dimensional models',
+    ],
+    url: 'https://studiehandboken.abo.fi/sv/kurs/IT00CD76/17483?period=2024-2027',
+  },
+  {
+    code: 'IT00CD40',
+    title: 'Web Technologies',
+    credits: '5 ECTS',
+    language: 'English',
+    description: 'A course on the principles and technologies used to build interactive web applications and web services.',
+    topics: [
+      'Internet protocols, web standards, and stateless services',
+      'Persistence, authentication, session management, and deployment',
+      'Client and server development with React and Django',
+    ],
+    url: 'https://studiehandboken.abo.fi/sv/kurs/IT00CD40/17066?period=2024-2027',
+  },
+];
+---
+
+<BaseLayout
+  title="Teaching"
+  description="Courses that Jesper Winsten is teaching at Åbo Akademi University."
+>
+  <div class="page teaching-page">
+    <h1>Teaching</h1>
+
+    <p class="teaching-intro">
+      These are courses that I am teaching or have taught in the past at Åbo Akademi University.
+    </p>
+
+    <section class="course-section" aria-labelledby="current-courses-heading">
+      <h2 id="current-courses-heading">Current</h2>
+      <div class="course-list">
+        {courses.map((course) => (
+          <article class="course-card">
+            <header class="course-header">
+              <div>
+                <p class="course-code">{course.code}</p>
+                <h3>
+                  <a href={course.url} target="_blank" rel="noopener noreferrer">{course.title}</a>
+                </h3>
+              </div>
+              <span class="course-credits">{course.credits}</span>
+            </header>
+
+            <p class="course-language">Teaching language: {course.language}</p>
+            <p>{course.description}</p>
+
+            <h4>Topics</h4>
+            <ul>
+              {course.topics.map((topic) => <li>{topic}</li>)}
+            </ul>
+
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="course-section" aria-labelledby="past-courses-heading" hidden>
+      <h2 id="past-courses-heading">Past</h2>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .teaching-intro {
+    max-width: 68ch;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .course-section h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .course-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .course-card {
+    padding: 1.4rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-left: 4px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+
+  .course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .course-code {
+    margin: 0 0 0.2rem;
+    color: var(--gray);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .course-card h3 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.25rem;
+  }
+
+  .course-card h3 a {
+    color: inherit;
+    text-underline-offset: 3px;
+  }
+
+  .course-credits {
+    flex: none;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.82rem;
+  }
+
+  .course-language {
+    margin: 0 0 1rem;
+    color: color-mix(in srgb, var(--foreground) 75%, transparent);
+    font-size: 0.9rem;
+  }
+
+  .course-card h4 {
+    margin: 1.2rem 0 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .course-card ul {
+    margin: 0 0 1.2rem 1.25rem;
+    padding: 0;
+  }
+
+  .course-card li {
+    margin-bottom: 0.35rem;
+  }
+
+  .course-link {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 600;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 520px) {
+    .course-header {
+      display: block;
+    }
+
+    .course-credits {
+      display: inline-block;
+      margin-top: 0.65rem;
+    }
+  }
+</style>
